@@ -84,7 +84,7 @@ which can be invoked with the usual
 \texttt{{\char'134}begin\,\ldots{\char'134}end} construction or with
 the short form \texttt{\$\,\ldots\$}. You can use any of the symbols
 and structures, from $\alpha$ to $\omega$, available in
-\LaTeX~\cite{Lamport:LaTeX}; this section will simply show a few
+\LaTeX~\cite{lamport1994latex}; this section will simply show a few
 examples of in-text equations in context. Notice how this equation:
 \begin{math}
   \lim_{n\rightarrow \infty}x=0
@@ -123,7 +123,7 @@ The ``\verb|figure|'' environment should be used for figures. One or
 more images can be placed within a figure. If your figure contains
 third-party material, you must clearly identify it as such, as shown
 in the example below.
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=\linewidth]{figures/sample-franklin.png}
   \caption{1907 Franklin Model D roadster. Photograph by Harris \&
@@ -166,6 +166,6 @@ foo = 123
 # parallel cell group named 'plel'
 foo = foo +  5
 bar = 'hello'
-foo # note: in "standard" Jupyter, this line outputs '128' when the user executes this cell
+foo # note: in "standard" Jupyter, this line outputs '128' when the user executes this
 \end{minted}
 

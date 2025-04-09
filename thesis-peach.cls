@@ -40,7 +40,12 @@
 \RequirePackage{tikz}
 
 %% ---- Add colors ----
-\RequirePackage[prologue]{xcolor}
+\@ifpackageloaded{xcolor}{
+    % xcolor is already loaded, do nothing
+}{
+    % xcolor is not loaded, load it
+    \RequirePackage[prologue]{xcolor}
+}
 \definecolor[named]{ACMBlue}{cmyk}{1,0.1,0,0.1}
 \definecolor[named]{ACMYellow}{cmyk}{0,0.16,1,0}
 \definecolor[named]{ACMOrange}{cmyk}{0,0.42,1,0.01}
@@ -63,6 +68,10 @@
 \RequirePackage[libertine]{newtxmath}
 \RequirePackage{dirtytalk}
 
+%% ---- Add Monospaced Font ----
+% Use Computer Modern Typewriter as the default monospaced font
+\renewcommand{\ttdefault}{cmtt}
+
 
 %% ---- HEADERS --------------------------------------------------------
 % This prevents the compiler from running on old versions of LaTeX.
@@ -81,7 +90,7 @@
 %% ---- PACKAGE LOADING ------------------------------------------------
 % This class uses the geometry.sty package to set the margins.
 % Use a 1-inch margin for all four sides for the report version.
-\RequirePackage[margin=1in,footskip=8pt,headsep=0.4cm,%
+\RequirePackage[margin=1in,footskip=12pt,headsep=0.4cm,%
   headheight=\baselineskip]{geometry}
  % This sets the distance between columns.
  \setlength{\columnsep}{0.3in}
@@ -314,7 +323,7 @@
  \renewcommand{\@abstract}{#1}}
 
  % Command to set it.
-\renewcommand{\acknowledgment}[1]{
+\newcommand{\acknowledgment}[1]{
  % Set the abstract text.
  \renewcommand{\@acknowledgment}{#1}}
 
@@ -418,15 +427,16 @@
 \AtBeginDocument{ %
  % Insert a title page.
  \titlepage %
- % Change the PDF title.
- \hypersetup{pdftitle=\inserttitle} %
- \abstractpage
-  \newpage %
+ % Change the PDF title using the defined title.
+ \hypersetup{pdftitle=\@thesistitle} %
+ % Add the abstract and acknowledgment pages.
+ \abstractpage %
+ % Move to a new page.
+ \newpage %
  % Restart page numbers for the chapters.
- \setcounter{page}{1} %
+ \setcounter{page}{2} %
  % Page numbers at the bottom
  \pagestyle{plain} %
  % Use Arabic numerals.
  \renewcommand{\thepage}{\arabic{page}} %
 }
-
